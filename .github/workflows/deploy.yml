@@ -1,0 +1,53 @@
+name: Build & Deploy to GitHub Pages
+
+on:
+  # Build on every push to default branch; add `pull_request:` if you’d like previews.
+  push:
+    branches: [main]
+
+permissions:
+  # Required for the deployment-actions to work
+  contents: read
+  pages: write
+  id-token: write # OIDC for the deploy-pages action
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️  Checkout source
+        uses: actions/checkout@v4
+
+      - name: 📦  Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+
+      - name: 📥  Install dependencies
+        run: npm ci
+
+      - name: 🏗️  Build site
+        run: npm run build # makes ./dist
+
+      # ─── GitHub Pages v4 workflow ───────────────────────────────────────────
+
+      - name: 📤  Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # only what you want to publish
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages # special env that unlocks Pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 🚀  Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
