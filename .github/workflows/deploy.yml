@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright
-        run: npx playwright install
+        run: npx playwright install chromium --with-deps
 
       - name: 🏗️  Build site
         run: npm run build # makes ./dist
