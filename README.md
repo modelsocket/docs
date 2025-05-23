@@ -1,6 +1,6 @@
 # modelsocket website
 
-Source for docs website at [https://modelsocket.com](https://modelsocket.com).
+Source for docs website at [https://modelsocket.github.io](https://modelsocket.github.io).
 
 ## Setup
 
