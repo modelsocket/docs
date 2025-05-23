@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./tritanopia.css";
+
+pre > code {
+  @apply text-sm;
+  @apply leading-6;
+}
+
+p > code {
+  @apply px-[1.5px] py-1 rounded-lg bg-gray-100;
+}
+
+h1 {
+  @apply hidden;
+}
+
+.toc-link {
+  @apply no-underline;
+}
+
+.toc-link:hover {
+  @apply underline;
+}
+
+.toc > ul {
+  @apply leading-4 mt-5;
+}
+
+.toc > ul > li {
+  @apply my-0;
+}
+
+.toc > ul > li > p {
+  @apply my-3;
+}
+
+.toc > ul > li > p > a {
+  @apply text-gray-800;
+  @apply font-normal;
+}
+
+.toc a {
+  @apply no-underline font-normal;
+  @apply text-gray-600;
+}
+
+.toc a:hover {
+  @apply underline underline-offset-4;
+}
+
+.mermaid-container {
+  @apply w-full flex flex-col items-center;
+}
