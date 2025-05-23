@@ -68,6 +68,9 @@ const mermaidDivWrapperPlugin =
   };
 
 export default defineConfig({
+  html: {
+    template: "./static/index.html",
+  },
   plugins: [
     TocFilePlugin(),
     pluginReact(),
