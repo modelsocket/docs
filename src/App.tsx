@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./home.mdx";
 import Toc from "../build/home.toc.md";
 import RobotLogo from "../static/robot.svg";
+import { DiscordLogo, GitHubLogo } from "../components/logos";
 
 const Hero = () => {
   return (
@@ -22,7 +23,21 @@ const Hero = () => {
 const App = () => {
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col pt-8 pb-32 max-w-3xl w-full">
+      <div className="flex flex-col pt-8 pb-32 max-w-2xl w-full">
+        <div className="flex pr-10 space-x-4">
+          <div className="flex-1"></div>
+          <div>
+            <a target="_blank" href="https://github.com/modelsocket">
+              <GitHubLogo className="fill-gray-300 hover:fill-gray-400 w-6 h-6" />
+            </a>
+          </div>
+
+          <div>
+            <a target="_blank" href="https://discord.gg/3UEk9rmBJX">
+              <DiscordLogo className="fill-gray-300 hover:fill-gray-400 w-6 h-6" />
+            </a>
+          </div>
+        </div>
         <div>
           <Hero />
         </div>

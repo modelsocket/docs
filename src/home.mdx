@@ -2,7 +2,7 @@
 
 This document describes _**ModelSocket**_: an open, streaming and stateful protocol for integrating with large language models (LLMs). 
 
-ModelSocket aims to be an alternative to REST APIs where low latency, stateful and bi-directional communication is a priority. 
+ModelSocket aims to be an alternative to REST APIs where low latency, low-level model control and bi-directional communication is a priority. 
 
 ## Why ModelSocket?
 
@@ -32,7 +32,7 @@ Many inference engines are based on blockwise attention mechanisms like [Paged A
 
 For inference engines that support it, ModelSocket gives you direct access to this capability. 
 
-For example, let's say you're analyzing a large document. You append 20,000 tokens to the model's context window. Now, instead of analyzing the document serially, you can create a fork for each analysis that you want to perform. Generating new tokens in this way takes advantage of the parallelism in the model's GPU (child sequences can be co-scheduled in the same batch and the KV cache is shared with the parent). 
+For example, let's say you're analyzing a large document. You append a large number of tokens to the model's context window. Now, instead of analyzing the document serially, you can create a fork for each analysis that you want to perform. Generating new tokens in this way takes advantage of the parallelism in the model's GPU (child sequences can be co-scheduled in the same batch and the KV cache is shared with the parent). 
 
 The ability to fork sequences also allows you to implement powerful inference time compute algorithms like Best of N and beam search in situations where you want to trade more time and compute for higher quality results.
 
